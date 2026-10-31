@@ -12,7 +12,7 @@ def main() -> None:
     csv_path = Path(__file__).with_name("pokemon_data.csv")
     print(f"Path to CSV file: {csv_path}")
 
-    # step 2: read the CSV file into a pandas DataFrame
+    # step 2: read the CSV file into a pandas DataFrame (2 dimention array)
     pokemon = pd.read_csv(csv_path)
     print(pokemon.head())  # print the first 5 rows of the DataFrame
 
@@ -20,11 +20,20 @@ def main() -> None:
     top10pk = pokemon.head(10)
     print(top10pk)
 
-    print(f"So luong Pokemon: {len(pokemon)}")
+    nr_poke = len(pokemon)
+    print("So luong Pokemon: " + str(nr_poke)) # casting
+    print("So luong Pokemon: 20") # hardcode
+    print(f"So luong Pokemon: {nr_poke}") # place holder, dynamic
 
     # step 4: loop through the stats and find the highest value for each stat
-    # array of stats
-    statArray = ["HP", "Attack", "Defense", "Sp. Atk", "Sp. Def", "Speed"]
+    # tuples from dataframe tuples = [x2, t2, y6, 8r] ==> tuples[0]
+    hpArr = pokemon["HP"]
+    hpMax = hpArr.max()
+    hpMaxPokemon = pokemon.loc[hpArr == hpMax, "Name"]
+    print(f"HP cao nhat {hpMax}: {hpMaxPokemon}")
+
+
+    statArray = ["Attack", "Defense", "Sp. Atk", "Sp. Def", "Speed"]
     for stat in statArray:
         # panda support max() function to find the highest value of a column
         highest_value = pokemon[stat].max()
