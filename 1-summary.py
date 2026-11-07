@@ -32,8 +32,8 @@ def main() -> None:
     hpMaxPokemon = pokemon.loc[hpArr == hpMax, "Name"]
     print(f"HP cao nhat {hpMax}: {hpMaxPokemon}")
 
-
-    statArray = ["Attack", "Defense", "Sp. Atk", "Sp. Def", "Speed"]
+    # other ckpi
+    statArray = ["Defense", "Speed"]
     for stat in statArray:
         # panda support max() function to find the highest value of a column
         highest_value = pokemon[stat].max()
